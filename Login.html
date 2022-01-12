@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="Navbar.css">
+</head>
+<body id="log" style="background-color: gray;">
+  <div class="login">
+    <h1>SIGN IN</h1>
+    <label for="userName">Email</label><br>
+    <input type="email" id="userName" placeholder="Username" required><br>
+    <label for="userPw">Password</label><br>
+    <input type="password" id= "userPw" placeholder="Password" required>
+    <div id="remember">
+        <input type="checkbox" value="lsRememberMe" id="rememberMe"
+           style="display: inline-block;">
+        <label>Remember me</label>
+    </div>
+    <button id= "log_btn" onclick="check()">Login</button>
+</div>
+<script src="Auth.js"></script>
+</body>
+</html>

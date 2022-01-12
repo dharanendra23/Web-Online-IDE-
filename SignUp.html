@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="Navbar.css">
+</head>
+<body id="log" style="background-color: grey;">
+  <div class="login">
+        <h1>REGISTER</h1>
+        <label for="uName">Email</label>
+        <input type="email" id="uName" placeholder="Username" required><br>
+        <label for="uPw">Password</label>
+        <input type="password"
+               id= "uPw"
+               placeholder="Password" required>
+        <ul class="helper-text">
+            <li class="length">Password must be at least 8 characters long.</li>
+            <li class="lowercase">Password must contain a lowercase letter.</li>
+            <li class="uppercase">Password must contain an uppercase letter.</li>
+            <li class="special">Password must contain a number or special character.</li>
+        </ul>
+            <button id="regst_btn" onclick="store();fun()">Sign Up</button> 
+</div>
+<script src="Auth.js"></script>
+</body>
+</html>

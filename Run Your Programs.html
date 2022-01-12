@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="ckeditor.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="Navbar.css">
+<style>
+  .topnav a.active {
+  background-color: rgb(65, 174, 207);
+  color: white;
+}
+</style>
+<script>
+
+  $(document).ready(function () {
+
+      function saveTextAsFile() {
+          // grab the content of the form field and place it into a variable
+          var textToWrite = document.getElementById(arguments[0]).value;
+          //  create a new Blob (html5 magic) that conatins the data from your form feild
+          var textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
+          // Specify the name of the file to be saved
+          var fileNameToSaveAs = "NewFile.txt";
+
+          // var fileNameToSaveAs = txtFileName.text;
+
+          // create a link for our script to 'click'
+          var downloadLink = document.createElement("a");
+          //  supply the name of the file (from the var above).
+          // you could create the name here but using a var
+          // allows more flexability later.
+          downloadLink.download = fileNameToSaveAs;
+          // provide text for the link. This will be hidden so you
+          // can actually use anything you want.
+          downloadLink.innerHTML = "My Hidden Link";
+
+          // allow our code to work in webkit & Gecko based browsers
+          // without the need for a if / else block.
+          window.URL = window.URL || window.webkitURL;
+
+          // Create the link Object.
+          downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+          // when link is clicked call a function to remove it from
+          // the DOM in case user wants to save a second file.
+          downloadLink.onclick = destroyClickedElement;
+          // make sure the link is hidden.
+          downloadLink.style.display = "none";
+          // add the link to the DOM
+          document.body.appendChild(downloadLink);
+
+          // click the new link
+          downloadLink.click();
+      }
+
+      function destroyClickedElement(event) {
+          // remove the link from the DOM
+          document.body.removeChild(event.target);
+      }
+
+      $("#download").click(function (e) {
+          e.preventDefault();
+          saveTextAsFile("content");
+      });
+
+      $("#download1").click(function (e) {
+         e.preventDefault();
+         saveTextAsFile( "content1");
+      });
+
+      $("#download2").click(function (e) {
+         e.preventDefault();
+         saveTextAsFile("content2");
+      });
+});  
+</script>
+</head>
+<body>
+<div class="logo">
+  <img src="Images/Logo.png" alt="logo" class="logoimg">
+  <i><b style="color: #16aa56; font-size:30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Program iT</b></i>
+</div>
+<div class="topnav">
+  <a href="C.html">Home</a>
+  <a class="active" href="Run Your Programs.html">Run Your Programs</a>
+  <a href="About.html">About Us</a>
+  <div class="search-container">
+    <form action="">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+<p style="margin-left: 10px;">Write your C program here and click on the test button to run on IDE & save to download<span style="font-weight: bolder;">:</span> </p>
+<form action="https://www.jdoodle.com/api/redirect-to-post/c-online-compiler" method="post">
+   <textarea id="content" style="margin-left: 10px;" name="initScript" rows="12" cols="150">
+#include<stdio.h> 
+
+int main(){
+    //your code goes here...
+
+    return 0;
+}
+  </textarea>
+  <input style="background-color: purple; color: white;" type="submit" value="Test">
+  <input type="button" style="background-color: purple;color: white;" id="download" value="Save"/>
+</form>
+<p style="margin-left: 10px;">Write your C++ program here and click on the test button to run on IDE & save to download<span style="font-weight: bolder;">:</span> </p>
+<form action="https://www.jdoodle.com/api/redirect-to-post/online-compiler-c++17" method="post">
+   <textarea id="content1" style="margin-left: 10px;" name="initScript" rows="12" cols="150">
+#include<iostream>
+using namespace std; 
+      
+int main(){
+    //your code goes here...
+          
+    return 0;
+}       
+  </textarea>
+  <input style="background-color: purple; color: white;" type="submit" value="Test">
+  <input type="button" style="background-color: purple;color: white;" id="download1" value="Save"/>
+</form>
+<p style="margin-left: 10px;">Write your Java program here and click on the test button to run on IDE & save to download<span style="font-weight: bolder;">:</span> </p>
+<form action="https://www.jdoodle.com/api/redirect-to-post/online-java-compiler" method="post">
+   <textarea id="content2" style="margin-left: 10px;" name="initScript" rows="12" cols="150">
+import java.util.*;
+
+public class MyClass {
+    public static void main(String args[]) {
+          Scanner read = new Scanner(System.in);
+
+          //your code goes here...
+      
+    }
+}
+  </textarea>
+  <input style="background-color: purple; color: white;" type="submit" value="Test">  
+  <input type="button" style="background-color: purple;color: white;" id="download2" value="Save"/>
+</form><br><br>
+
+<div style="text-align: center;">
+ <p>Please submit your program here : </p>
+ <input style="background-color: purple;" type="file" id="myfile" name="myfile">
+ <input  style="background-color: purple;" type="submit" id="sub" name="sub_but">
+</div><br><br>
+</body>
+</html>
